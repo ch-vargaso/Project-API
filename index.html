@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Music Searcher</title>
+  </head>
+  <body>
+    <header class="nav-tab">
+      <a class="main_name" href="/index.html">MusicWorld</a>
+      <nav>
+        <ul class="bar_links">
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">Genre</a></li>
+          <li><a href="/artist.html">Artist</a></li>
+          <li><a href="#">Playlist</a></li>
+        </ul>
+      </nav>
+      <!-- action  -->
+      <form class="example" action="/action_page.php">
+        <input
+          type="text"
+          placeholder="Search..."
+          name="search"
+          onkeyup="myFunction()"
+          title="Type in a name"
+          id="searchArtist"
+        />
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </header>
+
+    <h1>Top Artists Pop and Rock</h1>
+
+    <!-- search container -->
+    <div class="search-container">
+      <form class="example" action="/action_page.php">
+        <input type="text" placeholder="Search..." name="search" />
+        <button type="submit"><i class="searchbt2"></i></button>
+      </form>
+      <div class="amigo">
+        <div class="search-container">
+          <div class="row-search">
+            <label for="genre">Genre Select</label>
+            <select class="product-select" id="genreSelection" name="search">
+              <option value="all">Select...</option>
+              <option value="Pop" id="genre-search">Pop</option>
+              <option value="Rock">Rock</option>
+            </select>
+          </div>
+        </div>
+        <div class="search-container">
+          <div class="row-search">
+            <label for="products">Artists</label>
+            <select class="product-select" id="product" name="product">
+              <option value="empty"></option>
+              <option value="Tour">Pop</option>
+              <option value="Tour">Rock</option>
+              <option value="Tour">All</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- a partir de aquí empieza la tabla -->
+    <label for="checkbox">Genre</label>
+    <input type="checkbox" style="align-content: center" />
+    <label for="alphabetical">alphabetical</label>
+    <input type="checkbox" />
+
+    <table class="tabla-general">
+      <tbody id="table1">
+        <tr>
+          <th>Name</th>
+          <th>Genre</th>
+          <th>Blurbs</th>
+        </tr>
+        <tr></tr>
+      </tbody>
+    </table>
+
+    <script src="secret.js"></script>
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

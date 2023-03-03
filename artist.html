@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="artist.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Artist</title>
+  </head>
+  <body>
+    <header class="nav-tab">
+      <a class="main_name" href="/index.html">MusicWorld</a>
+      <nav>
+        <ul class="bar_links">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="#">Genre</a></li>
+          <li><a href="/artist.html" class="active">Artist</a></li>
+          <li><a href="#">Playlist</a></li>
+        </ul>
+      </nav>
+      <!-- action  -->
+      <form class="example" action="/action_page.php">
+        <input
+          type="text"
+          placeholder="Search..."
+          name="search"
+          onkeyup="myFunction()"
+          title="Type in a name"
+          id="searchArtist"
+        />
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </header>
+    <div id="artistcover" class="artist-header">
+      <h1 id="nombre" class="artisttitle"></h1>
+    </div>
+
+    <button><a href="/index.html">Back Home</a></button>
+
+    <div id="artistBox" class="artistBox">
+      <div id="nombre" class="nameBox">INFORMACION DEL GRUPO</div>
+      <div class="flexboxArtist">
+        <!-- este es el Flexbox -->
+        <div id="artistBio" class="artistBio"></div>
+        <div id="topTracks" class="topTracks">
+          aquí deberían ir los Top Tracks del Artista
+        </div>
+      </div>
+    </div>
+    <div>Aquí estaría un Top Tracks del Artista</div>
+
+    <footer>Aquí estará el footer</footer>
+
+    <script src="secret.js"></script>
+    <script src="artist.js"></script>
+  </body>
+</html>
