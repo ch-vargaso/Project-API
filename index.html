@@ -49,9 +49,13 @@
           <div class="row-search">
             <label for="genre">Genre Select</label>
             <select class="product-select" id="genreSelection" name="search">
-              <option value="all">Select...</option>
-              <option value="Pop" id="genre-search">Pop</option>
-              <option value="Rock">Rock</option>
+              <option value="select">Select...</option>
+             
+             <!-- REVIEW para poder filtrar por el genero, es mas sencillo si el value del option es el valor que tiene Rock/Pop en la API -->
+             <!-- Creo una opcion extra para los dos generos a la vez -->
+             <option value="all">Pop & Rock</option>
+             <option value="g.115" id="genre-search">Pop</option>
+              <option value="g.5">Rock</option>
             </select>
           </div>
         </div>
@@ -59,7 +63,6 @@
           <div class="row-search">
             <label for="products">Artists</label>
             <select class="product-select" id="product" name="product">
-              <option value="empty"></option>
               <option value="Tour">Pop</option>
               <option value="Tour">Rock</option>
               <option value="Tour">All</option>
@@ -85,8 +88,8 @@
       </tbody>
     </table>
 
-    <script src="secret.js"></script>
-    <script src="data.js"></script>
+    <!-- <script src="secret.js"></script> -->
+    <!-- <script src="data.js"></script> -->
     <script src="main.js"></script>
   </body>
 </html>
