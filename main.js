@@ -50,26 +50,7 @@ const tabla = (artistas) => {
     artistLink.textContent = artist.name;
     artistLink.setAttribute("href", artisUrl);
 
-    artistName.appendChild(artistLink);
-    const genre = document.createElement("td");
-    let genreList = artist.links.genres.ids;
-    let genreId;
-    if (genreList.includes("g.5") && genreList.includes("g.115")) {
-      genreId = "Rock/Pop";
-    } else if (genreList.includes("g.5")) {
-      genreId = "Rock";
-    } else {
-      genreId = "Pop";
-    }
-    genre.textContent = genreId;
-    // solo muestro el primer genero
-    const artistBlurbs = document.createElement("td");
-    artistBlurbs.textContent = artist.blurbs[0];
-    row.append(artistName, genre, artistBlurbs);
-  });
-};
-
-//  DECIR TODA LA FORMULA EN VOZ ALTA PARA ENTENDER LA LÓGICA!!!
+//  DECIR TODA LA FORMULA EN VOZ ALTA PARA ENTENDER LA LÓGICA!!! 
 // esta es la opción 2 del loop para escoger genero
 
 const genreOptions = (generos) => {
@@ -90,7 +71,7 @@ const genreOptions = (generos) => {
     });
     console.log("genre Selection", nameSelection);
     const rock = nameSelection;
-    let Rock; 
+    let Rock;
     let Pop;
     let all;
     if (nameSelection.includes("g.5") && nameSelection.includes("g.115")) {
@@ -101,6 +82,7 @@ const genreOptions = (generos) => {
     } else {
         Pop = document.createElement("option")
     }
+<<<<<<< HEAD
     
 >>>>>>> 5617253 (tratando de tener el pull de Raul)
 
@@ -232,6 +214,10 @@ function genereFilter(artists) {
 //     }
 // }
 
+=======
+}
+    
+>>>>>>> d932e36 (cleaning file ^)
 // Esto es para agregar un link hacia otra página, es decir otro HTML
 //       const a = document.createElement("a")
 //       a.setAttribute("href", "artistDetails.html")
@@ -245,6 +231,10 @@ function genereFilter(artists) {
 //       } else {
 //         console.log("else");
 //       BioA.innerHTML = "N/A";
+<<<<<<< HEAD
 //       }
 
 //  En este caso no encontraba las biografías de algunos, entonces se quebró el código. Para eso se utilizó este if después del loop.
+=======
+//       }
+>>>>>>> d932e36 (cleaning file ^)
