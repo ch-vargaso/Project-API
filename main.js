@@ -73,6 +73,7 @@ const tabla = (artistas) => {
 // esta es la opción 2 del loop para escoger genero
 
 const genreOptions = (generos) => {
+<<<<<<< HEAD
   const genreOptions = document.getElementById("genreSelection");
   const result = [];
   for (let i = 0; i < generos.lenght; i++) {
@@ -81,6 +82,27 @@ const genreOptions = (generos) => {
     }
   }
   console.log(result);
+=======
+    const genreOptions = document.getElementById("genreSelection");
+    const nameSelection = generos.map((genre) => {
+        return genre.links.genres.ids;
+        // separe solo el array de los ids de genero
+    });
+    console.log("genre Selection", nameSelection);
+    const rock = nameSelection;
+    let Rock; 
+    let Pop;
+    let all;
+    if (nameSelection.includes("g.5") && nameSelection.includes("g.115")) {
+        all = document.createElement("option")
+
+    } else if (nameSelection.includes("g.5")) {
+        Rock = document.createElement("option")
+    } else {
+        Pop = document.createElement("option")
+    }
+    
+>>>>>>> 5617253 (tratando de tener el pull de Raul)
 
   // const genreSelection = generos.map((genre) => {
   //     return genre.links.genres.ids;
@@ -103,6 +125,7 @@ const genreOptions = (generos) => {
   //     })
 };
 
+<<<<<<< HEAD
 //REVIEW
 //la idea de esta función es asignar un evento al select, para que ocurra algo cada vez que se selecciona un género
 
@@ -112,6 +135,22 @@ function addEvents(artists) {
     // console.log("selectOption", selectOption.value);
     genereFilter(artists);
   });
+=======
+    //  Aquí puede ser que lo filtre solo por los dos géneros que necesito...
+    // const set = new Set(nameSelection);
+    // console.log(set);
+    // const uniqueNames = [...set];
+    // // Aquí cree un duplicado del array genreSelection
+    // console.log("uniqueGenres", uniqueNames);
+    // // Aquí hice un loop forEach 
+    // uniqueNames.forEach((genre) => {
+    //     // creo una option para cada género... 
+    //     const option = document.createElement("option")
+    //     option.setAttribute("value", genre);
+    //     option.textContent = genre;
+    //     genreOptions.append(option);
+    // })
+>>>>>>> 5617253 (tratando de tener el pull de Raul)
 }
 
 //REVIEW
