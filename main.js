@@ -1,4 +1,3 @@
-console.log("funcionaaaaaaa");
 
 // Esto es para trabajar con el link
 
@@ -15,16 +14,22 @@ function fetchData1() {
     "https://api.napster.com/v2.2/genres/g.5,g.115/artists/top?&limit=200", request)
     .then((response) => response.json())
     .then((response) => {
-      console.log("estos son los datos: ", response);
-      tabla(response.artists);
-      genreOptions(response.artists);
-      //Llamamos la funcon addEvents para que , una vez generada la tabla, se añada el evento al elemento
-      addEvents(response.artists);
-      // rockTop(response.artists)
+        console.log("estos son los datos: ", response);
+        // Desde aquí "controllerFunction" llamo los console.log de mis funciones para 
+        // interactuar con el fetch
+        controllerFunction(response.artists)
     })
     .catch((error) => console.log("error", error));
 }
 fetchData1();
+// ******* Aquí hago los llamados para después solo hacer un llamado al fetch *******
+//             ********** desde aquí controlo las funciones *********
+const controllerFunction = (artists) => {
+    tabla(artists);
+//Llamamos la funcion addEvents para que , una vez generada la tabla, se añada el evento al elemento
+    addEvents(artists);
+    genereFilter(artists)
+}
 
 // ******************     Esta es la tabla       *****************
 
@@ -54,18 +59,20 @@ const tabla = (artistas) => {
         genre.textContent = genreId;
         const artistBlurbs = document.createElement("td");
         artistBlurbs.textContent = artist.blurbs[0];
-    })
-}
+        row.append(artistName, genre, artistBlurbs);
+    });
+};
 
 //  DECIR TODA LA FORMULA EN VOZ ALTA PARA ENTENDER LA LÓGICA!!! 
 
-//REVIEW
-//la idea de esta función es asignar un evento al select, para que ocurra algo cada vez que se selecciona un género
+
+// REVIEW
+// la idea de esta función es asignar un evento al select, para que ocurra algo cada vez que se selecciona un género
 
 function addEvents(artists) {
   const selectOption = document.getElementById("genreSelection");
   selectOption.addEventListener("change", () => {
-    // console.log("selectOption", selectOption.value);
+    console.log("selectOption", selectOption.value);
     genereFilter(artists);
   });
 }
@@ -74,21 +81,48 @@ function addEvents(artists) {
 // la idea de esta función es filtrar el total de resultados para mostrar :
 //1. si la opcion seleccionada es "POP", o "ROCK": mostrar los artistas que contienen uno de los dos, o los dos.
 //2.Si la opcion seleccionada es "Rock && Pop": mostrar SOLO los que contengan LOS DOS.
+// function genereFilter(artists) {
+//     // console.log("artists", artists);
+//     const selectOptionValue = document.getElementById("genreSelection").value;
+
+//     const filteredArtists = artists.filter((artist) => {
+//         const artistGenereArray = artist.links.genres.ids;
+//         if (selectOptionValue === "all") {
+//             return (
+//                 artistGenereArray.includes("g.5") && artistGenereArray.includes("g.115")
+//             );
+//         } else {
+//             return artistGenereArray.includes(selectOptionValue);
+//         }
+//     })
+//     tabla(filteredArtists);
+//     // console.log("filteredArtists", filteredArtists);
+// }
+
+
+// ++++++++ Este es mi experimento para terminar de filtrar ++++++++
+
 function genereFilter(artists) {
-    console.log("artists", artists);
+    // console.log("artists", artists);
     const selectOptionValue = document.getElementById("genreSelection").value;
 
     const filteredArtists = artists.filter((artist) => {
         const artistGenereArray = artist.links.genres.ids;
-        if (selectOptionValue === "all") {
+        if (artistGenereArray.includes("g.5") && artistGenereArray.includes("g.115")){
             return (
-                artistGenereArray.includes("g.5") && artistGenereArray.includes("g.115")
+                selectOptionValue === "all"
             );
+        } else if (artistGenereArray.includes("g.115")){
+            return (
+                selectOptionValue === "g.115");
+        } else if (artistGenereArray.includes("g.5")){
+            return (
+                selectOptionValue === "g.5");
         } else {
-            return artistGenereArray.includes(selectOptionValue);
+            return selectOptionValue === "";
         }
     })
     tabla(filteredArtists);
-        console.log("filteredArtists", filteredArtists);
+    // console.log("filteredArtists", filteredArtists);
 }
     
