@@ -29,6 +29,7 @@ const controllerFunction = (artists) => {
 //Llamamos la funcion addEvents para que , una vez generada la tabla, se añada el evento al elemento
     addEvents(artists);
     genereFilter(artists)
+    searchEvents();
 }
 
 // ******************     Esta es la tabla       *****************
@@ -71,9 +72,13 @@ const tabla = (artistas) => {
 
 function addEvents(artists) {
   const selectOption = document.getElementById("genreSelection");
-  selectOption.addEventListener("change", () => {
-    console.log("selectOption", selectOption.value);
-    genereFilter(artists);
+    selectOption.addEventListener("change", (event) => {
+        if (event.value === "all") {
+            tabla(artists)
+        } else {
+            console.log("selectOption", selectOption.value);
+            genereFilter(artists);
+        } 
   });
 }
       
@@ -110,19 +115,48 @@ function genereFilter(artists) {
         const artistGenereArray = artist.links.genres.ids;
         if (artistGenereArray.includes("g.5") && artistGenereArray.includes("g.115")){
             return (
-                selectOptionValue === "all"
+                selectOptionValue === "pop&rock"
             );
         } else if (artistGenereArray.includes("g.115")){
             return (
-                selectOptionValue === "g.115");
+                selectOptionValue === "pop");
         } else if (artistGenereArray.includes("g.5")){
             return (
-                selectOptionValue === "g.5");
+                selectOptionValue === "rock");
         } else {
-            return selectOptionValue === "";
+            // Esto lo tengo que trabajar mañana
+            return artistGenereArray.includes(selectOptionValue);
+            // +++++ me falta terminar esto pero ya obtuve lo que quería, me falta la opcion todos!! +++++
         }
     })
     tabla(filteredArtists);
     // console.log("filteredArtists", filteredArtists);
 }
     
+//  Esto pertenece a AddEvents pero lo estoy llamando así por experimentar 
+const searchEvents = () => { 
+    // se pone vacio para que el search lo rellene...
+    let artistName = ""
+    // Hago del target del id al cual quiero influenciar
+    const searchInput = document.getElementById("searchArtist2")
+    searchInput.addEventListener("input", (event) => {
+        console.log(event.target.value);
+        console.log("input event ", event);
+        artistName = event.target.value
+        console.log("artistName ", artistName); 
+    });
+    // Esto se hace para que el computador sepa que tecla estamos presionando con el evento "keydown"
+    searchInput.addEventListener("keydown", (event) => {
+        console.log("keyboard event", event);
+        if (event.key === "Enter") {
+            console.log("do something");
+            // Aquí tengo que mmostrar solo un resultado de la tabla 
+            // Cómo? toca averiguarlo...
+            // ejemplo: laFuncionQueMeFalta (artistName)
+            
+        
+        }
+    })
+}
+//  Ahora llamo la función arriba en (controllerFunction)
+
