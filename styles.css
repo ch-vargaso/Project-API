@@ -3,16 +3,7 @@
     margin: 0;
     padding: 0;
 }
-
-.nav-tab li,
-a,
-button {
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 550;
-    font-size: 16px;
-    color: rgb(215, 63, 63);
-    text-decoration: none;
-}
+/*  este es el header */
 
 header {
     display: flex;
@@ -22,6 +13,13 @@ header {
     align-items: center;
     padding: 5px 5%;
     background-color: #121110;
+}
+.nav-tab li, a, button {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 550;
+    font-size: 16px;
+    color: rgb(195, 170, 170);
+    text-decoration: none;
 }
 
 .main_name {
@@ -54,49 +52,51 @@ header {
 
 .bar_links li a:hover:not(.active-link) {
     color: white;
-    /* border: 2px solid yellow; */
+    border: 2px solid yellow;
     background-color: #70bcec34;
     margin-top: 0;
 }
 
-/* segundo ejemplo  */
-form.example input[type=text] {
+/* Top Search Bar */
+
+.header-search{
+    /* border: red solid 2px; */
+        border-radius: 3em 3em 3em 3em;
+}
+.header-search input[type=text] {
     padding: 10px;
     font-size: 17px;
-    border: 1px solid rgb(144, 162, 235);
-    border-radius: 3em;
+    /* border-right: 2px solid rgb(144, 162, 235); */
+    border: 2px solid rgb(144, 162, 235);
+    border-radius: 3em 0% 0% 3em;
     float:left;
-    width: 80%;
+    width: 81%;
     background: #f1f1f1;
-    margin: 0 auto;
-
 }
 
-form.example button {
-    float:left;
-    width: 20%;
-    padding: 10px;
-    background: #695bb8;
-    color: white;
-    font-size: 16px;
-    border: 1px solid grey;
-    border-radius: 50%;
-    border-left: none;
+.header-search button {
+    float:right;
+    width: 19%;
+    padding: 11.4px;
+    /* background: #695bb8; */
+background: #f1f1f1;
+    color: grey;
+    font-size: 14px;
+    border: 2px solid rgb(144, 162, 235);
+    border-radius: 0% 50% 50% 0%;
+    /* border-left: none; */
     cursor: pointer;
 }
 
-form.example button:hover {
+.header-search button:hover {
     background: #0b7dda;
 }
 
-form.example::after {
+.header-search::after {
     content: "";
     clear: both;
     display: table;
 }
-
-
-
 
 h1 {
     padding: 5rem;
@@ -113,19 +113,22 @@ h1 {
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
+    /* color: #0b7dda; */
     /* border-collapse: collapse; */
 }
-table th {
+
+.tabla-general th {
     border: 5px solid red;
     padding: 0.5em;
 }
-table td {
+.tabla-general td {
     text-align: center;
     padding: 0.5em;
     border:rgb(106, 0, 255)solid 0.3em;
-
 }
-
+.tabla-general a{
+    color: #0b7dda;
+}
 
 /* Aqui empieza la search form */
 
@@ -134,27 +137,49 @@ table td {
     color: #f1f1f1;
     padding: 1rem;
     background-color: white;
-    margin: 5rem auto;
-    background-color: rgba(58, 47, 47, 0.632);
+    margin: 10rem auto;
+    background-color: rgba(80, 10, 172, 0.638);
     border-radius: 35px;
-    max-width: 1200px;
+    max-width: 1000px;
     align-items: center;
+    border: rgb(237, 233, 27) 10px solid;
 }
-
-input[type=text] {
-    width: 100%;
-    height: 3.3em;
-    padding: 15px;
-    margin: 5px 0 22px 0;
+.search-bar{
+    border: #8099ad solid 5px;
+    color: red;
+        display: inline-block;
+        width: 100%;
+        height: 4.3em;
+}
+.search-bar input[type=text] {
+    width: 80%;
+    height: 4.3em;
+    padding: 16px;
+    /* margin: 5px 0 22px 0; */
     display: inline-block;
     border: none;
     border-radius: 15px;
     background: #f1f1f1;
 }
 
-input[type=text]:focus {
+.search-bar input[type=text]:focus {
     background-color: #ddd;
     outline: none;
+}
+
+.search-bar button {
+    float: right;
+    width: 20%;
+    height: 2.95em;
+    padding: 14.4px;
+    /* background: #695bb8; */
+    background: #f1f1f1;
+    color: grey;
+    font-size: 20px;
+    border: 2px solid rgb(144, 162, 235);
+    /* border-radius: 0% 50% 50% 0%; */
+    /* border-left: none; */
+    cursor: pointer;
 }
 
 /* SEARCH TAB */
@@ -164,19 +189,26 @@ input[type=text]:focus {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1px;
+    border: green solid 10px;
 }
 
 .product-container label {
     font-weight: bold;
 }
-
+.option-container{
+    display: flex;
+    flex-direction: row;
+    border: green solid 3px;
+    /* padding: 10px; */
+    flex-direction: row;
+}
 .row-search {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 50%;
+    border: red 3px solid;
 }
-
-.product-select {
+.option-select {
     background-color: #f1f1f1;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -220,8 +252,3 @@ input[type=text]:focus {
     cursor: pointer;
 }
 
-/* .amigo{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-} */
