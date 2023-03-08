@@ -1,0 +1,102 @@
+h1 {
+    margin: auto;
+    text-align: center;
+    padding: 5rem;
+}
+
+.artists-box{
+    position: relative;
+    border: 3px solid rgba(75, 40, 75, 0.776);
+    width: 250px;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 30em;
+    background-color: rgb(221, 220, 245);
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.574) ;
+}
+/* no sé si quiero hacer esto... */
+/* .artists-box::before{
+    content:'';
+    position: absolute;
+    
+} */
+.artist-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+}
+
+.artist-title{
+    text-align: center;
+    padding: 10px;
+
+}
+.artist-img{
+    width: 100%;
+    padding: 4px;
+}
+.hr-artist-box{
+    width: 90%;
+    margin: auto;
+    border: 2px solid purple;
+}
+.text-content{
+    position: relative;
+    height: 215px;
+    overflow: hidden;
+}
+.active .text-content{
+    height: auto;
+}
+
+.bio-text { 
+    text-align: justify;
+    margin-top: 10px;
+    padding: 8px;
+    /* Con esto puedo jugar con la altura del contenedor que quiero... */
+    height: 210px;
+}
+
+.text-content ::before {
+   content: '';
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 100px;
+   background: linear-gradient(transparent,rgb(221, 220, 245));
+}
+
+.active .text-content ::before{
+    display: none;
+}
+
+.more{
+    position: relative;
+    padding: 10px 15px;
+    /* background: rgba(255, 0, 0, 0.507); */
+    margin-top: 5px;
+    display: inline-block;
+    height: 40px;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.748);
+    border-radius: 0px 0px 17px 17px;
+    font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+.active .more{
+    color: white;
+}
+.more::before{
+    content: 'Show more...';
+}
+
+.active .more::before{
+    content: "Show less...";
+}
+

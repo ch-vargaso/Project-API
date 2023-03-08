@@ -11,7 +11,8 @@ function fetchData1() {
     redirect: "follow",
   };
   fetch(
-    "https://api.napster.com/v2.2/genres/g.5,g.115/artists/top?&limit=200", request)
+      "https://api.napster.com/v2.2/genres/g.5,g.115/artists/top?&limit=200", request)
+    
     .then((response) => response.json())
     .then((response) => {
         console.log("estos son los datos: ", response);
@@ -36,7 +37,7 @@ const controllerFunction = (artists) => {
 
 const tabla = (artistas) => {
     const table = document.getElementById("table1");
-    table.textContent = "";
+    // table.textContent = "";
     artistas.forEach((artist) => {
         const row = document.createElement("tr");
         table.appendChild(row);
@@ -76,6 +77,7 @@ function addEvents(artists) {
         if (event.value === "all") {
             tabla(artists)
         } else {
+            // Aqußi estoy inseguro de si esto funciona... 
             console.log("selectOption", selectOption.value);
             genereFilter(artists);
         } 
@@ -104,6 +106,8 @@ function addEvents(artists) {
 //     // console.log("filteredArtists", filteredArtists);
 // }
 
+
+// ++++++ Experimento para Filtrar por Nombre +++++++
 
 // ++++++++ Este es mi experimento para terminar de filtrar ++++++++
 
@@ -152,9 +156,7 @@ const searchEvents = () => {
             console.log("do something");
             // Aquí tengo que mmostrar solo un resultado de la tabla 
             // Cómo? toca averiguarlo...
-            // ejemplo: laFuncionQueMeFalta (artistName)
-            
-        
+            // ejemplo: laFuncionQueMeFalta (artistName)             
         }
     })
 }

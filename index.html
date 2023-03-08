@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="generalstyles.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -18,21 +19,22 @@
         <ul class="bar_links">
           <li><a href="#" class="active">Home</a></li>
           <li><a href="#">Genre</a></li>
-          <li><a href="/artist.html">Artist</a></li>
+          <li><a href="/topartists.html">Top Artists</a></li>
           <li><a href="#">Playlist</a></li>
         </ul>
       </nav>
       <!-- action  -->
-      <form class="header-search" action="/action_page.php">
+      <div class="header-search">
         <input
           type="text"
           placeholder="Search..."
           name="search"
+          onkeyup="myFunction()"
           title="Type in a name"
           id="searchArtist"
         />
         <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
+      </div>
     </header>
 
     <h1>Top Artists Pop and Rock</h1>
@@ -40,7 +42,7 @@
     <!-- search container -->
     <div class="search-container">
       <!-- voy a poner el action de la forma aquí para experimentar action="/action_page.php"   -->
-      <form class="search-bar">
+      <div class="search-bar">
         <input
           type="text"
           placeholder="Search artist..."
@@ -49,7 +51,7 @@
           value=""
         />
         <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
+      </div>
       <div class="amigo">
         <div class="option-container">
           <div class="row-search">
