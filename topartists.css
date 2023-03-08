@@ -25,23 +25,31 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* flex-direction: row; */
+    flex-direction: row;
     flex-wrap: wrap;
 }
 
-.artist-title{
+.artist-title {
     text-align: center;
     padding: 10px;
+    color: black;
 
+}
+.artist-title a{
+    color: black;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight:bold
 }
 .artist-img{
     width: 100%;
-    padding: 4px;
+    padding: 6px;
 }
 .hr-artist-box{
-    width: 90%;
+    width: 95%;
     margin: auto;
-    border: 2px solid purple;
+    border: 1px solid rgba(75, 40, 75, 0.776);
+    box-shadow: 0px 2px 2px 0px;
 }
 .text-content{
     position: relative;
@@ -91,6 +99,7 @@ h1 {
 }
 .active .more{
     color: white;
+    font-weight: 40px;
 }
 .more::before{
     content: 'Show more...';

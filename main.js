@@ -11,8 +11,10 @@ function fetchData1() {
     redirect: "follow",
   };
   fetch(
-      "https://api.napster.com/v2.2/genres/g.5,g.115/artists/top?&limit=200", request)
-    
+    // I had problems with the version 2.2. reason why I'm using this alternative. 
+
+    //   "https://api.napster.com/v2.2/genres/g.5,g.115/artists/top?&limit=200", request)
+      "https://api.napster.com/v2.0/genres/g.5,g.115/artists/top?apikey=ODFkZWJiOTAtMzAwOS00MzQ1LTg0YTctY2ZiMDdjN2MyNWIy")
     .then((response) => response.json())
     .then((response) => {
         console.log("estos son los datos: ", response);
@@ -37,7 +39,7 @@ const controllerFunction = (artists) => {
 
 const tabla = (artistas) => {
     const table = document.getElementById("table1");
-    // table.textContent = "";
+    table.textContent = " ";
     artistas.forEach((artist) => {
         const row = document.createElement("tr");
         table.appendChild(row);

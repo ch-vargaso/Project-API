@@ -2,9 +2,7 @@
 // Tengo que filtrar las imagenes por artista 
 console.log('location :>> ', location);
 const search = location.search
-
 const urlParameter = new URLSearchParams(search)
-
 const artistId = urlParameter.get("id")
 console.log('artistId :>> ', artistId);
 console.log('search :>> ', search);
@@ -17,7 +15,9 @@ function fetchArtist() {
     headers: myHeaders,
     redirect: 'follow'
     };
-   fetch("https://api.napster.com/v2.2/artists/"+artistId, requestOptions)
+    fetch ("https://api.napster.com/v2.2/artists/"+artistId, requestOptions)
+    // ("https://api.napster.com/v2.2/artists/"+artistId, requestOptions)
+   
     .then(response => response.json())
     .then ((response) => {
         console.log("datos: ", response);
@@ -31,7 +31,7 @@ fetchArtist()
 
 // +++++  DATOS IMAGENES +++++   //
 function ArtistImage() {
-    let url = `https://api.napster.com/v2.2/artists/${artistId}/images?apikey=MGIwMmYzMmYtYzg1Ni00ZmZmLWI5YzktMWVhNjJkNGU2NjMw`
+    let url = `https://api.napster.com/v2.2/artists/${artistId}/images?apikey=${apikey}`
     fetch(url).then((response) => {
         return response.json()
     }).then((result) => {
@@ -40,6 +40,7 @@ function ArtistImage() {
     })
 }
 ArtistImage()
+
 
 
 function artistBox(artist) {
