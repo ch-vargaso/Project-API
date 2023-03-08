@@ -32,7 +32,7 @@ const controllerFunction = (artists) => {
 //Llamamos la funcion addEvents para que , una vez generada la tabla, se añada el evento al elemento
     addEvents(artists);
     genereFilter(artists)
-    searchEvents();
+    searchEvents(artists);
 }
 
 // ******************     Esta es la tabla       *****************
@@ -84,6 +84,14 @@ function addEvents(artists) {
             genereFilter(artists);
         } 
   });
+  const checkBoxes = document.querySelectorAll("input[type='checkbox']");
+  console.log("Check Box", checkBoxes);
+  checkBoxes.forEach((checkbox)=>{
+    checkbox.addEventListener("click", () =>{
+        console.log("checkbox is working");
+        filterByCheckBox(artists)
+    })
+  })
 }
       
 //REVIEW
@@ -114,53 +122,94 @@ function addEvents(artists) {
 // ++++++++ Este es mi experimento para terminar de filtrar ++++++++
 
 function genereFilter(artists) {
-    // console.log("artists", artists);
     const selectOptionValue = document.getElementById("genreSelection").value;
-
-    const filteredArtists = artists.filter((artist) => {
-        const artistGenereArray = artist.links.genres.ids;
-        if (artistGenereArray.includes("g.5") && artistGenereArray.includes("g.115")){
-            return (
-                selectOptionValue === "pop&rock"
-            );
-        } else if (artistGenereArray.includes("g.115")){
-            return (
-                selectOptionValue === "pop");
-        } else if (artistGenereArray.includes("g.5")){
-            return (
-                selectOptionValue === "rock");
-        } else {
-            // Esto lo tengo que trabajar mañana
-            return artistGenereArray.includes(selectOptionValue);
-            // +++++ me falta terminar esto pero ya obtuve lo que quería, me falta la opcion todos!! +++++
-        }
-    })
+    console.log(selectOptionValue);
+    let filteredArtists; 
+    if (selectOptionValue != "all"){
+         filteredArtists = artists.filter((artist) => {
+            const artistGenereArray = artist.links.genres.ids;
+            if (artistGenereArray.includes("g.5") && artistGenereArray.includes("g.115")){
+                return selectOptionValue === "pop&rock";
+            } else if (artistGenereArray.includes("g.115")){
+                return selectOptionValue === "pop";
+            } else if (artistGenereArray.includes("g.5")){
+                return selectOptionValue === "rock";
+            } else { 
+                console.log("algo salio mal");
+            }
+        })
+    }else {
+        filteredArtists = artists
+    }
     tabla(filteredArtists);
-    // console.log("filteredArtists", filteredArtists);
 }
     
 //  Esto pertenece a AddEvents pero lo estoy llamando así por experimentar 
-const searchEvents = () => { 
+const searchEvents = (artistas) => { 
     // se pone vacio para que el search lo rellene...
     let artistName = ""
     // Hago del target del id al cual quiero influenciar
     const searchInput = document.getElementById("searchArtist2")
     searchInput.addEventListener("input", (event) => {
-        console.log(event.target.value);
-        console.log("input event ", event);
+        // console.log(event.target.value);
+        // console.log("input event ", event);
         artistName = event.target.value
-        console.log("artistName ", artistName); 
+        // console.log("artistName ", artistName); 
     });
     // Esto se hace para que el computador sepa que tecla estamos presionando con el evento "keydown"
     searchInput.addEventListener("keydown", (event) => {
-        console.log("keyboard event", event);
+        // console.log("keyboard event", event);
         if (event.key === "Enter") {
-            console.log("do something");
-            // Aquí tengo que mmostrar solo un resultado de la tabla 
-            // Cómo? toca averiguarlo...
-            // ejemplo: laFuncionQueMeFalta (artistName)             
+            // console.log("do something");
+            let nameInArray = uppercase(artistName)
+            // console.log("busqueda", nameInArray);
+            let result = artistas.filter( 
+                artista  => artista.name === nameInArray
+            )  
+            tabla (result);     
         }
     })
 }
 //  Ahora llamo la función arriba en (controllerFunction)
+
+function uppercase(name) {
+    let array1 = name.split(' ');
+    var newarray1 = [];
+    for (let x = 0; x < array1.length; x++){
+        newarray1.push(array1[x].charAt(0).toUpperCase() + array1[x].slice(1));
+    }
+    return newarray1.join(' ');
+}
+
+const filterByCheckBox = (artists) =>{
+    const checkBoxes = document.querySelectorAll("input[type='checkbox']:checked");
+    console.log("checkboxes inside Filter Function", checkBoxes);
+    const checkBoxesValues = Array.from(checkBoxes).map((checkbox)=>{
+        return checkbox.value
+    })
+    console.log("check boxes values",checkBoxesValues);
+    let result = optionAlphabetical(artists) 
+    tabla(result)
+}
+
+// #### function to organize alphafetically the artists names #####
+function optionAlphabetical (artistas){
+    let namesArray = [];
+    let sortedArtistsObjects=[];
+    artistas.forEach((artista) => {
+        const artistName = artista.name;
+        namesArray.push(artistName);
+    });
+    namesArray.sort()
+    for (let i = 0; i < namesArray.length; i ++){
+        let artistName = namesArray[i]
+        // console.log(namesArray[i]);
+        let result = artistas.filter( 
+            artista  => artista.name === artistName
+        )
+        sortedArtistsObjects.push(result[0]);
+    }
+    // console.log(sortedArtistsObjects);
+    return sortedArtistsObjects
+}
 

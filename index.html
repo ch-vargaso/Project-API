@@ -58,7 +58,8 @@
             <label for="genre">Genre Select</label>
             <!-- Este es el container del select... de las opciones  -->
             <select class="option-select" id="genreSelection" name="search">
-              <option value="all">Select...</option>
+              <option value="select">Select...</option>
+              <option value="all">All</option>
               <!-- REVIEW para poder filtrar por el genero, es mas sencillo si el value del option es el valor que tiene Rock/Pop en la API -->
               <!-- Creo una opcion extra para los dos generos a la vez -->
               <option value="pop&rock">Pop & Rock</option>
@@ -76,10 +77,10 @@
           </div>
         </div>
       </div>
-      <label for="checkbox">Genre</label>
-      <input type="checkbox" style="align-content: center" />
+      <label for="genres">Genre</label>
+      <input type="checkbox" name="genres" id="genres" value="genres"style="align-content: center" />
       <label for="alphabetical">alphabetical</label>
-      <input type="checkbox" />
+      <input type="checkbox" name="alphabetical" id="alphabetical" value="alphabetical"/>
     </div>
     <!-- a partir de aquí empieza la tabla -->
 
