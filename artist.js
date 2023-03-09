@@ -42,7 +42,6 @@ function ArtistImage() {
 ArtistImage()
 
 
-
 function artistBox(artist) {
     const nombre = document.getElementById("nombre");
     const nombreArtista = document.createElement("h2")
