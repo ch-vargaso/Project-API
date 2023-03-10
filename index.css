@@ -37,14 +37,12 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     color: whitesmoke;
     /* padding: 1rem; */
-    background-color: rgb(157, 15, 15);
+    background-color: rgb(106, 1, 1);
     width: 30%;
     height: 600px;
     align-items: center;
     margin-left: 0;
     padding-top: 20px;
-
-    border: rgb(200, 27, 27) 0px 10px 10px  10px solid;
 }
 .search-title{
     text-align: left;
@@ -55,7 +53,7 @@ body{
 }
 
 .search-bar{
-    color: red;
+    color: rgb(168, 0, 0);
         display: inline-block;
         margin-left: 25px;
         width: 85%;
@@ -126,7 +124,7 @@ body{
 .tabla-general th {
     /* border: 5px solid rgb(216, 4, 4); */
     padding: 0.5em;
-    background-color: #cf0303;
+    background-color: #9e0303;
     color: whitesmoke;
     border-radius: 8px;
     max-height: 10px;

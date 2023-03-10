@@ -12,8 +12,8 @@ function fetchData1() {
   };
   fetch(
     // I had problems with the version 2.2. reason why I'm using this alternative. 
-    //   "https://api.napster.com/v2.2/genres/g.5,g.115/artists/top?&limit=200", request)
-      "https://api.napster.com/v2.0/genres/g.5,g.115/artists/top?apikey=ODFkZWJiOTAtMzAwOS00MzQ1LTg0YTctY2ZiMDdjN2MyNWIy")
+      "https://api.napster.com/v2.2/genres/g.5,g.115/artists/top?&limit=200", request)
+    //   "https://api.napster.com/v2.0/genres/g.5,g.115/artists/top?apikey=ODFkZWJiOTAtMzAwOS00MzQ1LTg0YTctY2ZiMDdjN2MyNWIy")
     .then((response) => response.json())
     .then((response) => {
         console.log("estos son los datos: ", response);
