@@ -98,8 +98,7 @@ function popArtists(){
 }
 popArtists()
 
-
-// +++++++ this is the artist card container +++++++
+// +++++++ this is the Rock artist card container +++++++
 
 function artistCard (artists){
     const card = document.getElementById("artistbox");
@@ -128,6 +127,7 @@ function artistCard (artists){
         rockDiv.append(name, textContainer, showMore);
     });
 }
+// ++++++ This is the Pop Artist Container +++++
 
 function artistCardPop (artists){
     const card = document.getElementById("popcontainer");
@@ -143,6 +143,8 @@ function artistCardPop (artists){
         artistLink.textContent = artist.name;
         artistLink.setAttribute("href", artisUrl);
         name.appendChild(artistLink);
+
+
         const textContainer = document.createElement("div");
         textContainer.className = "text-content";
         const hrText = document.createElement("hr");
@@ -157,7 +159,6 @@ function artistCardPop (artists){
     });
 }
 
-
 // ### function for the show more / show less ### 
 
 let more = document.querySelectorAll('.more');
@@ -167,3 +168,6 @@ for (let i = 0; i < more.length; i++){
     })
 }
 
+// necesito hacer un loop para incluir cada llamada del Fetch y asignar ese id a mi url, 
+// después necesito entrar en ese "path" y buscar la imagen que quiero... que sería algo así como 
+// artista.url...
