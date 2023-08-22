@@ -21,7 +21,7 @@ body{
     text-transform:uppercase;
     background-image: linear-gradient(to right , 
     rgba(0,0,0,1) 15%,
-    rgba(0,0,0,.7) 40%,
+    rgba(0, 0, 0, 0.7) 40%,
     rgba(0,0,0,.4) 70%,
     rgba(0,0,0,0)100%);
 }
@@ -29,6 +29,7 @@ body{
 .page-container{
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
 }
 
 /* Aqui empieza la search form */
