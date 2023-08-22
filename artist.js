@@ -16,7 +16,11 @@ function fetchArtist() {
     redirect: 'follow'
     };
     fetch ("https://api.napster.com/v2.2/artists/"+artistId, requestOptions)
-    // ("https://api.napster.com/v2.2/artists/"+artistId, requestOptions)
+    
+    // Opción con los reemplazos en la url...
+    // (`https://api.napster.com/v2.2/artists/${artistId}?lang=en-EN&apikey=${requestOptions}`)
+   
+    // como ponerle el lenguaje en Inglés : El endpoint es: lang=en-EN
    
     .then(response => response.json())
     .then ((response) => {
@@ -40,7 +44,6 @@ function ArtistImage() {
     })
 }
 ArtistImage()
-
 
 
 function artistBox(artist) {

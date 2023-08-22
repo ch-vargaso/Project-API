@@ -18,9 +18,7 @@
       <nav>
         <ul class="bar_links">
           <li><a href="#" class="active">Home</a></li>
-          <li><a href="#">Genre</a></li>
           <li><a href="/topartists.html">Top Artists</a></li>
-          <li><a href="#">Playlist</a></li>
         </ul>
       </nav>
       <!-- action  -->
@@ -36,64 +34,67 @@
         <button type="submit"><i class="fa fa-search"></i></button>
       </div>
     </header>
-
-    <h1>Top Artists Pop and Rock</h1>
-
-    <!-- search container -->
-    <div class="search-container">
-      <!-- voy a poner el action de la forma aquí para experimentar action="/action_page.php"   -->
-      <div class="search-bar">
-        <input
-          type="text"
-          placeholder="Search artist..."
-          name="search"
-          id="searchArtist2"
-          value=""
-        />
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </div>
-      <div class="amigo">
-        <div class="option-container">
-          <div class="row-search">
-            <label for="genre">Genre Select</label>
-            <!-- Este es el container del select... de las opciones  -->
-            <select class="option-select" id="genreSelection" name="search">
-              <option value="select">Select...</option>
-              <option value="all">All</option>
-              <!-- REVIEW para poder filtrar por el genero, es mas sencillo si el value del option es el valor que tiene Rock/Pop en la API -->
-              <!-- Creo una opcion extra para los dos generos a la vez -->
-              <option value="pop&rock">Pop & Rock</option>
-              <option value="pop" id="genre-search">Pop</option>
-              <option value="rock">Rock</option>
-            </select>
-          </div>
-          <div class="row-search">
-            <label for="products">Por Vocal (puede ser borrado)</label>
-            <select class="option-select" id="product" name="product">
-              <option value="Pop">all</option>
-              <option value="Rock">A -Z</option>
-              <option value="All">Z - A</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <label for="genres">Genre</label>
-      <input type="checkbox" name="genres" id="genres" value="genres"style="align-content: center" />
-      <label for="alphabetical">alphabetical</label>
-      <input type="checkbox" name="alphabetical" id="alphabetical" value="alphabetical"/>
+    <div class="headerimg" >
+      <h1>look for your Music</h1>
     </div>
-    <!-- a partir de aquí empieza la tabla -->
 
-    <table class="tabla-general">
-      <tbody>
-        <tr>
-          <th>Name</th>
-          <th>Genre</th>
-          <th>Blurbs</th>
-        </tr>
-      </tbody>
-      <tbody id="table1"></tbody>
-    </table>
+  
+    <!-- search container -->
+    <div class="page-container">
+      <div class="search-container">
+        <!-- voy a poner el action de la forma aquí para experimentar action="/action_page.php"   -->
+        <h3 class=" search-title">Type your artist</h3>
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Search artist..."
+            name="search"
+            id="searchArtist2"
+            value=""
+          />
+        </div>
+          <div class="amigo">
+          <div class="option-container">
+              <label for="genre">Genre Select</label>
+              <!-- Este es el container del select... de las opciones  -->
+              <select class="option-select" id="genreSelection" name="search">
+                <option value="select">Select...</option>
+                <option value="all">All</option>
+                <!-- REVIEW para poder filtrar por el genero, es mas sencillo si el value del option es el valor que tiene Rock/Pop en la API -->
+                <!-- Creo una opcion extra para los dos generos a la vez -->
+                <option value="pop&rock">Pop & Rock</option>
+                <option value="pop" id="genre-search">Pop</option>
+                <option value="rock">Rock</option>
+              </select>
+            <!-- <div class="row-search">
+              <label for="products">Por Vocal (puede ser borrado)</label>
+              <select class="option-select" id="product" name="product">
+                <option value="Pop">all</option>
+                <option value="Rock">A -Z</option>
+                <option value="All">Z - A</option>
+              </select>
+            </div> -->
+          </div>
+          <div class="checkbox">
+            <label class="checkbox-label" for="alphabetical">Order alphabetically</label>
+            <input class="checkbox-input"type="checkbox" name="alphabetical" id="alphabetical" value="alphabetical"/>
+          </div>
+          </div>
+      </div>
+      <!-- a partir de aquí empieza la tabla -->
+      <table class="tabla-general">
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Blurbs</th>
+          </tr>
+        </tbody>
+        <tbody id="table1"></tbody>
+      </table>
+
+    </div>
+    
 
     <script src="secret.js"></script>
     <script src="main.js"></script>

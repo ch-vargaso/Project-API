@@ -12,9 +12,8 @@ function fetchData1() {
   };
   fetch(
     // I had problems with the version 2.2. reason why I'm using this alternative. 
-
-    //   "https://api.napster.com/v2.2/genres/g.5,g.115/artists/top?&limit=200", request)
-      "https://api.napster.com/v2.0/genres/g.5,g.115/artists/top?apikey=ODFkZWJiOTAtMzAwOS00MzQ1LTg0YTctY2ZiMDdjN2MyNWIy")
+      "https://api.napster.com/v2.2/genres/g.5,g.115/artists/top?&limit=200", request)
+    //   "https://api.napster.com/v2.0/genres/g.5,g.115/artists/top?apikey=ODFkZWJiOTAtMzAwOS00MzQ1LTg0YTctY2ZiMDdjN2MyNWIy")
     .then((response) => response.json())
     .then((response) => {
         console.log("estos son los datos: ", response);
@@ -143,7 +142,6 @@ function genereFilter(artists) {
     }
     tabla(filteredArtists);
 }
-    
 //  Esto pertenece a AddEvents pero lo estoy llamando así por experimentar 
 const searchEvents = (artistas) => { 
     // se pone vacio para que el search lo rellene...
@@ -193,6 +191,7 @@ const filterByCheckBox = (artists) =>{
 }
 
 // #### function to organize alphafetically the artists names #####
+
 function optionAlphabetical (artistas){
     let namesArray = [];
     let sortedArtistsObjects=[];
@@ -209,7 +208,5 @@ function optionAlphabetical (artistas){
         )
         sortedArtistsObjects.push(result[0]);
     }
-    // console.log(sortedArtistsObjects);
     return sortedArtistsObjects
 }
-
