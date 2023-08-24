@@ -49,17 +49,10 @@ popArtists();
 
 // ++++++ Aquí se hace el loop cambiando el id cada vez, pero es una función con el id ficticio en este momento +++++
 function generateImg(url) {
-  // const rockDiv = document.querySelector("artists-box");
-  // Aquí se genera la URL de la imagen
-  // console.log('url :>> ', url);
   const img = document.createElement("img");
   img.setAttribute("src", url);
-  // img.setAttribute("style", "width:300px");
-  // con esto se ve el resultado de la imagen como HTML
-  // console.log('img :>> ', img);
 }
-
-// +++++++++ En esta función se hace el loop haciendo el fetch de cada vez que se cambió el artista ++++++++++++
+// +++++++++ En esta función se hace el loop haciendo el fetch de cada vez que se cambia el artista ++++++++++++
 
 function getArtistImage(artistId) {
   // console.log("artistId :>> ", artistId);
@@ -72,14 +65,6 @@ function getArtistImage(artistId) {
       generateImg(result.images[0].url);
       return result.images[0].url;
     });
-}
-// ++++++++ Esta funcion puede que no funcione ++++++++ mirarla!!!!!
-function artistImage(img) {
-  const photo = document.getElementById("pepsi");
-  const imagen = document.createElement("img");
-  imagen.setAttribute("src", img[3].url);
-  console.log("extraccion imagen Artista");
-  photo.append(photo);
 }
 
 // +++++++ this is the Rock artist Card container +++++++
@@ -99,12 +84,10 @@ function artistCard(artists) {
       artistLink.textContent = artist.name;
       artistLink.setAttribute("href", artisUrl);
       name.appendChild(artistLink);
-
       const imagen = document.createElement("img");
       imagen.className = "artist-img";
       imagen.setAttribute("src", image);
       imagen.setAttribute("id", "pepsi");
-
       const textContainer = document.createElement("div");
       textContainer.className = "text-content";
       const hrText = document.createElement("hr");
@@ -119,9 +102,7 @@ function artistCard(artists) {
     });
   });
 }
-
-// ++++++ This is the Pop Artist Container +++++
-// HAY QUE ASEGURAR ESTA FUNCTION!!!!!!!!!!
+// ++++++ Pop Artist Container +++++
 
 function artistCardPop(artists) {
   const card = document.getElementById("popcontainer");
