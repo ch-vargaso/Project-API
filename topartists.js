@@ -14,7 +14,7 @@ function rockArtists() {
     .then((response) => response.json())
     .then((result) => {
       console.log("top 5 rock", result);
-      artistCard(result.artists);
+      RockArtistCard(result.artists);
     })
     .catch((error) => console.log("error", error));
 }
@@ -41,7 +41,7 @@ function popArtists() {
       // fetchArtistDetails(artistIds);
       // Aqußi se resume todos los promise alls.....
       // en estas funciones que son mencionadas anteriormente...
-      artistCardPop(result.artists);
+      PopArtistCard(result.artists);
     })
     .catch((error) => console.log("error", error));
 }
@@ -54,22 +54,39 @@ function generateImg(url) {
 }
 // +++++++++ En esta función se hace el loop haciendo el fetch de cada vez que se cambia el artista ++++++++++++
 
-function getArtistImage(artistId) {
+async function getArtistImage(artistId) {
   // console.log("artistId :>> ", artistId);
   const artistUrl = `https://api.napster.com/v2.2/artists/${artistId}/images?apikey=${apikey}`;
+  // try {
+  //   const response = await fetch(artistUrl);
+  //   const result = await response.json();
+  //   if (result.images && result.images.length >= 0) {
+  //     generateImg(result.images[0].url);
+  //     return result.images[0].url;
+  //   } else {
+  //     throw new Error("No images found for artist.");
+  //   }
+  // } catch (error) {
+  //   console.log("error:", error);
+  // }
   return fetch(artistUrl)
     .then((response) => {
       return response.json();
     })
     .then((result) => {
-      generateImg(result.images[0].url);
-      return result.images[0].url;
+      if (result.images && result.images.length >= 0) {
+        // console.log("result.images[0].url :>> ", result.images[0].url);
+        generateImg(result.images[0].url);
+        return result.images[0].url;
+      } else {
+        error;
+      }
     });
 }
 
 // +++++++ this is the Rock artist Card container +++++++
 
-function artistCard(artists) {
+function RockArtistCard(artists) {
   const card = document.getElementById("artistbox");
   artists.forEach((artist) => {
     getArtistImage(artist.id).then((image) => {
@@ -104,7 +121,7 @@ function artistCard(artists) {
 }
 // ++++++ Pop Artist Container +++++
 
-function artistCardPop(artists) {
+function PopArtistCard(artists) {
   const card = document.getElementById("popcontainer");
   artists.forEach((artist) => {
     getArtistImage(artist.id).then((image) => {
