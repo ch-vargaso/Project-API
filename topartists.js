@@ -151,6 +151,7 @@ function PopArtistCard(artists) {
       // create text container
       const textContainer = document.createElement("div");
       textContainer.className = "text-content";
+
       const hrText = document.createElement("hr");
       hrText.className = "hr-artist-box";
 
@@ -164,14 +165,15 @@ function PopArtistCard(artists) {
     // create a container for the function Show more
       const moreContainer = document.createElement("div")
       moreContainer.className = "more-container"
-    
+      const divforShowMore = document.createElement("div");
+      divforShowMore.className = "div-gradient" 
       const showMore = document.createElement("a");
       showMore.className = "more";
-      moreContainer.appendChild(showMore);
+      moreContainer.append(divforShowMore ,showMore);
       scrollingText.append(biography, moreContainer)
-      textContainer.append(hrText, scrollingText);
+      textContainer.append( scrollingText);
 
-      rockDiv.append(name, imagen, textContainer);
+      rockDiv.append(name, imagen,hrText, textContainer);
       showMore.addEventListener("click", function(){
         rockDiv.classList.toggle("active");
       })
