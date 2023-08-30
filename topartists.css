@@ -44,13 +44,15 @@ h2 {
 }
 .artists-box {
   position: relative;
-  /* border: 3px solid rgba(75, 40, 75, 0.776); */
+  border: 3px solid rgba(75, 40, 75, 0.776);
   width: 250px;
+  /* max-height: 500px; */
   margin: 10px;
   border-radius: 15px;
   box-shadow: 30em;
   background-color: rgb(255, 255, 255);
   box-shadow: 5px 3px 16px 0px rgba(0, 0, 0, 0.574);
+  overflow: hidden;
 }
 /* no sé si quiero hacer esto... */
 .artists-box::before {
@@ -80,11 +82,15 @@ h2 {
 
 .text-content {
   position: relative;
-  height: 215px;
+  height: 300px;
+  overflow:hidden;
+  background: linear-gradient(transparent, rgb(255, 255, 255, 0.9));
   overflow: hidden;
+  z-index: 1;
 }
 .active .text-content {
-  height: auto;
+  overflow: scroll;
+  background: none;
 }
 .hr-artist-box {
   width: 95%;
@@ -93,11 +99,24 @@ h2 {
   box-shadow: 0px 1px 1px 0px;
 }
 .bio-text {
+  position: relative;
+  top: 0;
+  left: 0;
+  /* width: 100%; */
+  z-index: 1;
   text-align: justify;
   margin-top: 10px;
   padding: 8px;
+  background-clip: text;
+  /* color: transparent; */
+  mix-blend-mode: difference;
   /* Con esto puedo jugar con la altura del contenedor que quiero... */
-  height: 210px;
+  /* height: 210px; */
+}
+.bio-text a{
+  color: blue;
+  font-family: 'Times New Roman', Times, serif;
+  z-index: 1;
 }
 
 .text-content ::before {
@@ -106,18 +125,30 @@ h2 {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100px;
-  background: linear-gradient(transparent, rgb(255, 255, 255));
-}
+  height: 100%;
+  /* background: linear-gradient(transparent, rgba(0, 0, 255, 0.683)); */
+  z-index: 0; /* Make sure the background is below the text and .more-container */
 
+}
 .active .text-content ::before {
   display: none;
 }
+.more-container{
+  height: 120px;
+  background: linear-gradient(transparent, rgba(0, 0, 255, 0.683));
+  /* background-color: blue; */
+  /* background: linear-gradient(transparent, rgba(255, 255, 255, 0.9)); */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 120px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
 
 .more {
-  position: relative;
-  padding: 10px 15px;
-  margin-top: 5px;
+  position: absolute;
   display: inline-block;
   height: 40px;
   width: 100%;
@@ -126,16 +157,23 @@ h2 {
   font-family: "Times New Roman", Times, serif;
   cursor: pointer;
   text-transform: uppercase;
+  text-align:justify;
   font-size: 15px;
+  margin-left: 10px;
+  /* background: linear-gradient(transparent, rgba(255, 255, 255, 0.9)); */
+  bottom: 0;
 }
-.active .more {
+
+.artists-box.active.more{
   color: white;
-  font-weight: 40px;
+  font-weight: bold;
 }
 .more::before {
   content: "Show more...";
+  height: 30px;
+}
+.artists-box.active .more::before {
+  content: "Show less...";
+  height: 30px;
 }
 
-.active .more::before {
-  content: "Show less...";
-}

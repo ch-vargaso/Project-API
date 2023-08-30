@@ -111,11 +111,15 @@ function RockArtistCard(artists) {
       hrText.className = "hr-artist-box";
       const biography = document.createElement("p");
       biography.className = "bio-text";
-      biography.textContent = artist.bios[0].bio;
+      // biography.textContent = artist.bios[0].bio;
+      biography.innerHTML = artist.bios[0].bio;
       textContainer.append(hrText, biography);
       const showMore = document.createElement("a");
       showMore.className = "more";
       rockDiv.append(name, imagen, textContainer, showMore);
+      showMore.addEventListener("click", function(){
+        rockDiv.classList.toggle("active");
+      })
     });
   });
 }
@@ -129,6 +133,7 @@ function PopArtistCard(artists) {
       rockDiv.className = "artists-box";
       card.appendChild(rockDiv);
 
+      // create name and artist link
       const name = document.createElement("h2");
       name.className = "artist-title";
       const artistLink = document.createElement("a");
@@ -137,31 +142,50 @@ function PopArtistCard(artists) {
       artistLink.textContent = artist.name;
       artistLink.setAttribute("href", artisUrl);
       name.appendChild(artistLink);
+      // create the image
       const imagen = document.createElement("img");
       imagen.className = "artist-img";
       imagen.setAttribute("src", image);
       imagen.setAttribute("id", "pepsi");
+
+      // create text container
       const textContainer = document.createElement("div");
       textContainer.className = "text-content";
       const hrText = document.createElement("hr");
       hrText.className = "hr-artist-box";
+
+      const scrollingText = document.createElement("div")
+      scrollingText.className = "scrolling-container"
+
+      // create the biography with HTML content
       const biography = document.createElement("p");
       biography.className = "bio-text";
-      biography.textContent = artist.bios[0].bio;
-      textContainer.append(hrText, biography);
-
+      biography.innerHTML = artist.bios[0].bio;
+    // create a container for the function Show more
+      const moreContainer = document.createElement("div")
+      moreContainer.className = "more-container"
+    
       const showMore = document.createElement("a");
       showMore.className = "more";
-      rockDiv.append(name, imagen, textContainer, showMore);
+      moreContainer.appendChild(showMore);
+      scrollingText.append(biography, moreContainer)
+      textContainer.append(hrText, scrollingText);
+
+      rockDiv.append(name, imagen, textContainer);
+      showMore.addEventListener("click", function(){
+        rockDiv.classList.toggle("active");
+      })
     });
   });
-}
+};
 
 // ### function for the show more / show less ###
-
-let more = document.querySelectorAll(".more");
-for (let i = 0; i < more.length; i++) {
-  more[i].addEventListener("click", function () {
-    more[i].parentNode.classList.toggle("active");
+document.addEventListener("DOMContentLoaded", function(){
+  const moreLinks = document.querySelectorAll(".more");
+  moreLinks.forEach(function(moreLink){
+    moreLink.addEventListener("click", function(){
+      const artistBox = moreLink.closest(".artists-box");
+      artistBox.classList.toggle("active")
+    });
   });
-}
+});
