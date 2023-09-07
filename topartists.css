@@ -118,6 +118,7 @@ h2 {
 .active .bio-text{
   overflow-y: scroll;
   height: 350px;
+  padding-bottom: 50px;
 }
 .bio-text a{
   color: blue;

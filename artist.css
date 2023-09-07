@@ -22,30 +22,69 @@
     color: rgb(218, 216, 216);
     margin: auto;
 }
-.artistBox{
-    align-content: center;
-    align-items: center;
-    /* border: 20px solid green; */
-}
+
+
 .nameBox{
     border: solid 2px aqua;
     width: 100%;
     text-align: center;
 }
-.flexboxArtist{
+/*  Information like biography and top tracks */
+.info-artist{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
     gap: 10px;
 }
-.artistBio{
-    /* border: orange solid 3px; */
+
+.artistBox{
+    align-content: center;
+    align-items: center;
+    border: 10px solid green;
+    width: 50%;
+    padding: 30px;
+
+}
+.artistBox h2{
+    border: 2px blueviolet solid;
+}
+.flexboxArtist{
+    gap: 10px;
     width: 100%;
+    padding:0;
+}
+.artistBio{
+    border: orange solid 3px;
     font-family: 'Times New Roman', Times, serif;
     word-spacing: 4px;
     line-height: 1.5;
     font-size: 21px;
     text-align:left;
-    padding: 40px;
-
+    padding: 30px;
     text-align: justify;
 }
+
+.top-tracks-container{
+    border: red 3px solid;
+    display: flex;
+    flex-direction: column;
+}
+.top-tracks-container h2{
+    border: blueviolet 3px solid;
+}
+
+.tracks-container{
+    border: 3px green solid;
+    height: 600px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.single-track-container{
+    border: 2px red solid;
+    margin: 2px;
+   
+}
+
+

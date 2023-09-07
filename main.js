@@ -4,7 +4,6 @@
 function fetchData1() {
     const myHeaders = new Headers();
     myHeaders.append("apikey", apikey);
-
   const request = {
     method: "GET",
     headers: myHeaders,
@@ -13,7 +12,6 @@ function fetchData1() {
   fetch(
     // I had problems with the version 2.2. reason why I'm using this alternative. 
       "https://api.napster.com/v2.2/genres/g.5,g.115/artists/top?&limit=200", request)
-    //   "https://api.napster.com/v2.0/genres/g.5,g.115/artists/top?apikey=ODFkZWJiOTAtMzAwOS00MzQ1LTg0YTctY2ZiMDdjN2MyNWIy")
     .then((response) => response.json())
     .then((response) => {
         console.log("estos son los datos: ", response);
@@ -36,10 +34,11 @@ const controllerFunction = (artists) => {
 
 // ******************     Esta es la tabla       *****************
 
-const tabla = (artistas) => {
+const tabla = async(artistas) => {
     const table = document.getElementById("table1");
     table.textContent = " ";
-    artistas.forEach((artist) => {
+    // this is an example from the chat...
+    artistas.forEach(async (artist) => {
         const row = document.createElement("tr");
         table.appendChild(row);
         const artistName = document.createElement("td");
@@ -61,13 +60,12 @@ const tabla = (artistas) => {
         }
         genre.textContent = genreId;
         const artistBlurbs = document.createElement("td");
-        artistBlurbs.textContent = artist.blurbs[0];
+        artistBlurbs.textContent = artist.links.influences.ids;
         row.append(artistName, genre, artistBlurbs);
     });
 };
 
 //  DECIR TODA LA FORMULA EN VOZ ALTA PARA ENTENDER LA LÓGICA!!! 
-
 
 // REVIEW
 // la idea de esta función es asignar un evento al select, para que ocurra algo cada vez que se selecciona un género
@@ -91,32 +89,7 @@ function addEvents(artists) {
         filterByCheckBox(artists)
     })
   })
-}
-      
-//REVIEW
-// la idea de esta función es filtrar el total de resultados para mostrar :
-//1. si la opcion seleccionada es "POP", o "ROCK": mostrar los artistas que contienen uno de los dos, o los dos.
-//2.Si la opcion seleccionada es "Rock && Pop": mostrar SOLO los que contengan LOS DOS.
-// function genereFilter(artists) {
-//     // console.log("artists", artists);
-//     const selectOptionValue = document.getElementById("genreSelection").value;
-
-//     const filteredArtists = artists.filter((artist) => {
-//         const artistGenereArray = artist.links.genres.ids;
-//         if (selectOptionValue === "all") {
-//             return (
-//                 artistGenereArray.includes("g.5") && artistGenereArray.includes("g.115")
-//             );
-//         } else {
-//             return artistGenereArray.includes(selectOptionValue);
-//         }
-//     })
-//     tabla(filteredArtists);
-//     // console.log("filteredArtists", filteredArtists);
-// }
-
-
-// ++++++ Experimento para Filtrar por Nombre +++++++
+};
 
 // ++++++++ Este es mi experimento para terminar de filtrar ++++++++
 
@@ -149,8 +122,8 @@ const searchEvents = (artistas) => {
     // Hago del target del id al cual quiero influenciar
     const searchInput = document.getElementById("searchArtist2")
     searchInput.addEventListener("input", (event) => {
-        // console.log(event.target.value);
-        // console.log("input event ", event);
+        console.log(event.target.value);
+        console.log("input event ", event);
         artistName = event.target.value
         // console.log("artistName ", artistName); 
     });

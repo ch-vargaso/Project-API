@@ -57,18 +57,6 @@ function generateImg(url) {
 async function getArtistImage(artistId) {
   // console.log("artistId :>> ", artistId);
   const artistUrl = `https://api.napster.com/v2.2/artists/${artistId}/images?apikey=${apikey}`;
-  // try {
-  //   const response = await fetch(artistUrl);
-  //   const result = await response.json();
-  //   if (result.images && result.images.length >= 0) {
-  //     generateImg(result.images[0].url);
-  //     return result.images[0].url;
-  //   } else {
-  //     throw new Error("No images found for artist.");
-  //   }
-  // } catch (error) {
-  //   console.log("error:", error);
-  // }
   return fetch(artistUrl)
     .then((response) => {
       return response.json();
@@ -77,6 +65,7 @@ async function getArtistImage(artistId) {
       if (result.images && result.images.length >= 0) {
         // console.log("result.images[0].url :>> ", result.images[0].url);
         generateImg(result.images[0].url);
+        console.log('generateImg :>> ', result);
         return result.images[0].url;
       } else {
         error;
