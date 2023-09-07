@@ -42,10 +42,8 @@
 .artistBox{
     align-content: center;
     align-items: center;
-    border: 10px solid green;
+    border: 2px solid green;
     width: 50%;
-    padding: 30px;
-
 }
 .artistBox h2{
     border: 2px blueviolet solid;
@@ -84,7 +82,11 @@
 .single-track-container{
     border: 2px red solid;
     margin: 2px;
-   
 }
+.track-name{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
 
 
