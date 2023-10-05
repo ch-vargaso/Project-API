@@ -1,87 +1,117 @@
-.artist-header{
+/* experiment for the background */
+
+.artist-container {
+    /* border: yellow 5px solid; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 0;
     backface-visibility: hidden;
-    background: black;
-    /* background: linear-gradient(to left, transparent,rgb(0, 0, 0)); */
-    /* background-image: linear-gradient(to left, rgba(255,0,0,0), #000000 ); */
-}
+    height: 400px;
+    /* background: linear-gradient(to left, transparent, rgba(0, 0, 0, 1)); */
+    background: linear-gradient(to left, transparent 20%, 
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 1) 100%);
+
+  }
+  .div-artist-name{
+    /* border: red 5px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }
+  .div-artist-name h2{
+    font-size: 60px;
+    color: white;
+    margin: 0;
+  }
+  .artist-image{
+    /* border: green 5px solid; */
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+  }
+  .artist-image img{
+    height: 100%;
+    z-index: -1;
+    width: 80%;
+  }
 
 
-.artist-header img{
-    max-height: fit-content;
-    width: 48%;
-    background-image: linear-gradient(to left, 
-    transparent,rgba(0,0,0,1) );
-    background: black;
-}
+/* Biography and top tracks */
 
-.artisttitle{
-    color: rgb(218, 216, 216);
-    margin: auto;
-}
-
-
-.nameBox{
-    border: solid 2px aqua;
-    width: 100%;
-    text-align: center;
-}
-/*  Information like biography and top tracks */
 .info-artist{
+    /* border: red 2px solid; */
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-top: 40px;
     margin-bottom: 50px;
-    gap: 10px;
+    gap: 40px;
+}
+.info-artist hr{
+    width: 2px;
+    margin: 40px 0px;
+    border: 1px solid rgba(246, 54, 47, 0.742);
+    box-shadow: 0px 1px 1px 0px;
 }
 
-.artistBox{
+/*  ARTIST BIOGRAPHY */
+.artist-bio{
     align-content: center;
     align-items: center;
-    border: 2px solid green;
     width: 50%;
+    /* border: red solid 3px; */
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 30em;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 5px 3px 16px 0px rgba(0, 0, 0, 0.574);
 }
-.artistBox h2{
-    border: 2px blueviolet solid;
+.artist-bio h2{
+    /* border: 2px blueviolet solid; */
+    font-size: 30px;
+    padding: 20px;
 }
-.flexboxArtist{
-    gap: 10px;
-    width: 100%;
-    padding:0;
-}
-.artistBio{
-    border: orange solid 3px;
+
+/*  aqui toca ponerlo con otro nombre.... */
+.artist-text {
+    /* border: orange solid 3px; */
     font-family: 'Times New Roman', Times, serif;
     word-spacing: 4px;
     line-height: 1.5;
     font-size: 21px;
     text-align:left;
-    padding: 30px;
+    padding: 20px;
     text-align: justify;
-}
-
-.top-tracks-container{
-    border: red 3px solid;
-    display: flex;
-    flex-direction: column;
-}
-.top-tracks-container h2{
-    border: blueviolet 3px solid;
-}
-
-.tracks-container{
-    border: 3px green solid;
     height: 600px;
     overflow: hidden;
     overflow-y: scroll;
 }
+
+/* TOP TRACKS */
+
+.top-tracks-container{
+    /* border: red 3px solid; */
+    display: flex;
+    flex-direction: column;
+}
+.top-tracks-container h2{
+    /* border: blueviolet 3px solid; */
+    font-size: 30px;
+    padding: 20px;
+}
+
+.tracks-container{
+    /* border: 3px green solid; */
+    height: 620px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 .single-track-container{
-    border: 2px red solid;
-    margin: 2px;
+    /* border: 2px red solid; */
+    margin: 6px;
 }
 .track-name{
     font-family:Verdana, Geneva, Tahoma, sans-serif;

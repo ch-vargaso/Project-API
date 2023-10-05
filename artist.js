@@ -5,38 +5,35 @@ const search = location.search;
 const urlParameter = new URLSearchParams(search);
 const artistId = urlParameter.get("id");
 
-// DATOS ARTISTA //
-function fetchArtist() {
-  const myHeaders = new Headers();
-  myHeaders.append("apikey", apikey);
-  const requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow",
-  };
-  fetch("https://api.napster.com/v2.2/artists/" + artistId, requestOptions)
-    .then((response) => response.json())
-    .then((response) => {
-      console.log(response.artists[0].name);
-      artistBox(response.artists);
+// ARTIST DATA  WITH IMAGES//
+function fetchArtistData(){
+  try {
+    const myHeaders = new Headers();
+    myHeaders.append("Cookie", CookieId);
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+    let artistUrl = `https://api.napster.com/v2.2/artists/ ${artistId}?lang=en-EN&apikey=${apikey}`
+    let imgDataUrl =`https://api.napster.com/v2.2/artists/${artistId}/images?apikey=${apikey}`
+    let urlsArray = [artistUrl, imgDataUrl]
+    let promisesArray = urlsArray.map(async (singleUrl)=>{
+      const singleResponse = await fetch(singleUrl, requestOptions);
+      return await singleResponse.json();
     })
-    .catch((error) => console.log("error", error));
-}
-fetchArtist();
+    Promise.all(promisesArray).then((result)=>{
+      console.log('Artist with images :>> ', result);
+      artistCover(result)
+      artistBio(result[0].artists[0])
+    })
 
-// +++++  DATOS IMAGENES +++++   //
-function ArtistImage() {
-  let url = `https://api.napster.com/v2.2/artists/${artistId}/images?apikey=${apikey}`;
-  fetch(url)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      artistImage(result.images);
-      console.log("Images :>> ", result);
-    });
-}
-ArtistImage();
+  } catch (error) {
+    console.log('error :>> ', error);
+  }
+};
+fetchArtistData()
+
 
 function topTracks() {
   const myHeaders = new Headers();
@@ -52,34 +49,40 @@ function topTracks() {
   )
     .then((response) => response.json())
     .then((result) => {
-      console.log("top tracks", result);
-      console.log("lista de tracks", result.tracks);
       topTracksCard(result.tracks);
     })
     .catch((error) => console.log("error :>> ", error));
 }
 topTracks();
 
-function artistBox(artist) {
-  const nombre = document.getElementById("nombre");
-  const nombreArtista = document.createElement("h2");
-  nombreArtista.innerHTML = artist[0].name;
-  nombre.appendChild(nombreArtista);
 
-  const bioDiv = document.getElementById("artistBio");
-  const artistBio = document.createElement("p");
-  artistBio.innerHTML = artist[0].bios[0].bio;
-  bioDiv.appendChild(artistBio);
+// Artist Header Info
+function artistCover(artist){
+  const artistHeader = document.getElementById("artist-container")
+  // name artist
+  const artistName = document.createElement("div")
+  artistName.className = "div-artist-name"
+  const name = document.createElement("h2")
+  name.innerText = artist[0].artists[0].name;
+  artistName.appendChild(name)
+  // image
+  const artistImage = document.createElement("div")
+  artistImage.className = "artist-image"
+  const img = document.createElement("img")
+  img.setAttribute("src", artist[1].images[0].url)
+  artistImage.appendChild(img)
+  artistHeader.append(artistName, artistImage)
+
 }
-
-function artistImage(img) {
-  const photo = document.getElementById("artistcover");
-  const imagen = document.createElement("img");
-  imagen.setAttribute("src", img[0].url);
-  photo.append(imagen);
+// Artist Biography
+function artistBio(artist) {
+  const artistInfo = document.getElementById("artist-bio");
+  const artistBio = document.createElement("div");
+  artistBio.className = "artist-text"
+  artistBio.innerHTML = artist.bios[0].bio;
+  artistInfo.append(artistBio)
 }
-
-// voy a intentar hacer el fetch para hacer el preview of the top traksof the artist
+// Artist Top Tracks
 function topTracksCard(tracks) {
   const card = document.getElementById("top-tracks");
 //   const trackCountElement = document.getElementById("track-count");
